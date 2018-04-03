@@ -25,10 +25,10 @@
       <h1 class="h3 mb-3 font-weight-normal">CRM by PKaras</h1>
       
       <label for="inputText" class="sr-only">Username</label> 
-      {% render_field form.username class="form-control" placeholder="Username" %}
+      {% render_field form.username class="form-control" placeholder="Username" required="True" autofocus="True"%}
       <label for="inputPassword" class="sr-only">Password</label>
-      {% render_field form.password class="form-control" placeholder="Password" %}
-      <div class="checkbox mb-3">
+      {% render_field form.password class="form-control" placeholder="Password" required="True" %}
+      <div>
         
       </div>
       

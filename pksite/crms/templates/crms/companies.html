@@ -7,19 +7,16 @@
 {% block content %}
 <p class="lead"> COMPANIES </p>
 
-  
+  <form action={{'addcompany'}}>
+     <button class="btn btn-xs btn-primary" style = "margin:5px auto" type="submit">Add new company</button>
+  </form>
   {% if companies_list %}
   <div class="table-responsive">
   <table class="table table-condensed">
     <thead>
       <tr>
         <th> Company name </th>
-        
-        <th>
-            <form action={{'addcompany'}}>
-              <button class="btn btn-xs btn-primary btn-block" type="submit">Add new company</button>
-            </form>
-        </th>
+        <th> Contact </th>
         
       </tr>
       
@@ -29,6 +26,7 @@
     
     <tr>
       <td> {{company.company_name}} </td>
+      <td> {{company.company_contact}} </td>
     </tr>
     
     

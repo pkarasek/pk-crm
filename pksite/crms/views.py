@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Company
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from .forms import CompanyNameForm
 
 def index(request):
@@ -15,6 +17,7 @@ def index(request):
 
 def login(request):
     template = loader.get_template('registration/login.html')
+   
     context = {}
     return HttpResponse(template.render(context, request))
 
@@ -24,7 +27,7 @@ def sections(request):
     
     template = loader.get_template('crms/sections.html')
     context = {
-        
+        'sections':True
         }
     return HttpResponse(template.render(context, request))
 
@@ -45,7 +48,7 @@ def addcompany(request):
     if request.method == 'POST':
         form = CompanyNameForm(request.POST)
         if form.is_valid():
-            Company.objects.create(company_name = form.data['company_name'])
+            Company.objects.create(company_name = form.data['company_name'], company_contact = form.data['company_contact'])
             template = loader.get_template('crms/addcompany.html')
             context = {}
             return redirect('companies')
